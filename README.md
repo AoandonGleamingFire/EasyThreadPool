@@ -58,6 +58,32 @@ get_cur_threads(): 实时掌控扩容状态。
 get_running_tasks(): 监测当前系统繁忙程度。
 
 
+
+----------------------------------------------------------
+
+
+* 利用 `std::condition_variable` 实现高性能的生产者-消费者模型。
+    * 使用 `std::lock_guard` 与 `std::unique_lock` 确保线程安全。
+    * 采用 `std::atomic` 保证跨线程状态同步的可见性。
+核心架构
+分发器内部维护一个任务队列和工作线程，通过信号机制协调运行：
+
+
+
+## 🛠️ 快速开始
+
+### 环境要求
+* 支持 C++11 或更高标准的编译器 (GCC 4.8+, Clang 3.3+, MSVC 2015+)
+* CMake (可选)
+
+### 编译运行
+```bash
+g++ -std=c++11 main.cpp -lpthread -o lite_dispatcher
+./lite_dispatcher
+
+
+
+
 [ ] 引入 Work-Stealing 算法减少全局锁竞争。
 
 [ ] 支持任务优先级调度。
